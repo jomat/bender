@@ -6,8 +6,6 @@ import nio
 from my_project_name.callbacks import Callbacks
 from my_project_name.storage import Storage
 
-from tests.utils import run_coroutine
-
 
 class CallbacksTestCase(unittest.TestCase):
     def setUp(self) -> None:
