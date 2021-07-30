@@ -50,10 +50,17 @@ class Callbacks:
         if event.sender == self.client.user:
             return
 
+        # Ignore messages in other rooms
+        if room.room_id != "!ExxHlGraVYWtCObBuN:asra.gr":
+            return
+
         logger.debug(
             f"Bot message received for room {room.display_name} | "
-            f"{room.user_name(event.sender)}: {msg}"
+            f"{room.user_name(event.sender)}: {msg} | "
+            f"event id {event.event_id}"
         )
+
+        await self.client.room_redact(room.room_id,event.event_id,"AGAIN TEXT? Go discussing in DISCUSS GALORE!")
 
         # Process as message if in a public room without command prefix
         has_command_prefix = msg.startswith(self.command_prefix)
@@ -87,6 +94,9 @@ class Callbacks:
         """
         logger.debug(f"Got invite to {room.room_id} from {event.sender}.")
 
+        # do nothing for now
+        return
+
         # Attempt to join 3 times before giving up
         for attempt in range(3):
             result = await self.client.join(room.room_id)
@@ -117,6 +127,9 @@ class Callbacks:
             reacted_to_id: The event ID that the reaction points to.
         """
         logger.debug(f"Got reaction to {room.room_id} from {event.sender}.")
+
+        # do nothing for now
+        return
 
         # Get the original event that was reacted to
         event_response = await self.client.room_get_event(room.room_id, reacted_to_id)
