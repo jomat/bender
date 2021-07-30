@@ -24,5 +24,6 @@ class CallbacksTestCase(unittest.TestCase):
             self.fake_client, self.fake_storage, self.fake_config
         )
 
+
 if __name__ == "__main__":
     unittest.main()
