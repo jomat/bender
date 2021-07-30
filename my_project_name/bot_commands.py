@@ -88,6 +88,7 @@ class Command:
         await send_text_to_room(self.client, self.room.room_id, text)
 
     async def _unknown_command(self):
+        return
         await send_text_to_room(
             self.client,
             self.room.room_id,
