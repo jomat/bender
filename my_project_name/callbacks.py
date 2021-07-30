@@ -60,7 +60,9 @@ class Callbacks:
             f"event id {event.event_id}"
         )
 
-        await self.client.room_redact(room.room_id, event.event_id, "AGAIN TEXT? Go discussing in DISCUSS GALORE!")
+        await self.client.room_redact(
+            room.room_id, event.event_id, "AGAIN TEXT? Go discussing in DISCUSS GALORE!"
+        )
 
         # Process as message if in a public room without command prefix
         has_command_prefix = msg.startswith(self.command_prefix)
